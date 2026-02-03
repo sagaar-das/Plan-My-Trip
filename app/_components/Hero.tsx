@@ -1,7 +1,10 @@
+"use client"
 import { Button } from '@/components/ui/button'
 import { HeroVideoDialog } from '@/components/ui/hero-video-dialog'
 import { Textarea } from '@/components/ui/textarea'
+import { useUser } from '@clerk/nextjs'
 import { ArrowDown, Globe2, Icon, Landmark, Plane, Send } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const suggestions = [
@@ -24,6 +27,17 @@ const suggestions = [
 ]
 
 function Hero() {
+
+    const {user}=useUser();
+    const router=useRouter();
+    const onSend=()=>{
+        if(!user){
+            router.push('/sign-in')
+            return ;
+        }
+        //Navigate to create trip planner web page 
+    }
+
     return (
         <div className='mt-24 w-full flex justify-center'>
 
@@ -41,7 +55,7 @@ function Hero() {
                         focus-visible:ring-0 shadow-none resize-none'
                         />
 
-                        <Button size={'icon'} className='absolute bottom-6 right-6'>
+                        <Button size={'icon'} className='absolute bottom-6 right-6' onClick={()=>onSend()} >
                             <Send className='h-4 w-4' />
                         </Button>
                     </div>

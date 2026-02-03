@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
-import { Link } from 'lucide-react'
+import { SignInButton } from '@clerk/nextjs'
+
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const menuOptions = [
@@ -31,11 +33,10 @@ function Header() {
         {/* Menu Options */}
         <div className='flex gap-8 items-center'>
             {menuOptions.map((menu,index)=>(
-                <Link key={menu.path} href={menu.path}>
-                    
-                 <span className='text-lg font-semibold cursor-pointer 
-                 transition-transform duration-300 hover:scale-105 hover:text-primary'>{menu.name}</span>
                 
+                <Link key={menu.path} href={menu.path}>
+                <span className='text-lg font-semibold cursor-pointer 
+                 transition-transform duration-300 hover:scale-105 hover:text-primary'>{menu.name}</span>
                 </Link>
                 
             ))}
@@ -43,7 +44,9 @@ function Header() {
 
         {/* Get started Button  */}
         <div>
+            <SignInButton mode='modal'>
             <Button>Get Started</Button>
+            </SignInButton>
         </div>
 
     </div>

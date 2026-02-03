@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Baloo_Bhai_2 } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 
 
@@ -18,7 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <ClerkProvider>
+      <html lang="en">
       <body
        className={baloo.className}
       >
@@ -28,5 +30,8 @@ export default function RootLayout({
         
       </body>
     </html>
+
+    </ClerkProvider>
+    
   );
 }
