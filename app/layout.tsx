@@ -3,6 +3,7 @@ import { Baloo_Bhai_2 } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
 
 
@@ -24,9 +25,9 @@ export default function RootLayout({
       <body
        className={baloo.className}
       >
-        <Provider>
+        <ConvexClientProvider>
           {children} 
-        </Provider>
+        </ConvexClientProvider>
         
       </body>
     </html>
