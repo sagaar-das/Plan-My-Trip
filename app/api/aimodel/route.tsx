@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
 
     try {
         const completion = await openai.chat.completions.create({
-            model: 'arcee-ai/trinity-large-preview:free',
+            model: 'arcee-ai/trinity-large-preview',
             response_format: { type: 'json_object' },
             messages: [
                 {
